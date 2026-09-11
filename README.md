@@ -1,5 +1,7 @@
 # Llama 3.2 1B From Scratch
 
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Llama%203.2%201B-yellow)](https://huggingface.co/Harish241412/llama-3.2-1b-from-scratch)
+
 A PyTorch implementation of **Meta Llama 3.2 1B from scratch**, including the Transformer architecture, custom tokenizer, KV cache, autoregressive generation, and sampling.
 
 The implementation loads the original Llama 3.2 1B weights into the scratch architecture and is validated against the Hugging Face implementation at both BF16 and FP32 precision.
