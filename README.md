@@ -6,6 +6,15 @@ A PyTorch implementation of **Meta Llama 3.2 1B from scratch**, including the Tr
 
 The implementation loads the original Llama 3.2 1B weights into the scratch architecture and is validated against the Hugging Face implementation at both BF16 and FP32 precision.
 
+## Architecture
+
+The model follows the Llama pre-norm Transformer architecture:
+
+<img width="3441" height="4828" alt="image" src="https://github.com/user-attachments/assets/177564a8-2a4f-4fc1-829f-3908a1e5c217" />
+
+For GQA, the model uses **32 query heads and 8 KV heads**, with four query heads sharing each KV head.
+
+
 ## Model Configuration
 
 | Parameter              |   Value |
@@ -42,38 +51,6 @@ The implementation loads the original Llama 3.2 1B weights into the scratch arch
 * Configurable stop tokens
 * Original Llama 3.2 1B weight loading
 * Hugging Face vs scratch numerical verification
-
-## Architecture
-
-The model follows the Llama pre-norm Transformer architecture:
-
-```text
-Input IDs
-   ↓
-Token Embedding
-   ↓
-16 × Transformer Blocks
-   │
-   ├── RMSNorm
-   ├── Grouped Query Attention
-   │    ├── Q / K / V projections
-   │    ├── RoPE
-   │    ├── Causal Attention
-   │    └── Output Projection
-   │
-   ├── Residual Connection
-   ├── RMSNorm
-   ├── SwiGLU MLP
-   └── Residual Connection
-   ↓
-Final RMSNorm
-   ↓
-Tied LM Head
-   ↓
-Logits
-```
-
-For GQA, the model uses **32 query heads and 8 KV heads**, with four query heads sharing each KV head.
 
 ## Verification
 
