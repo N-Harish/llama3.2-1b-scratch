@@ -23,42 +23,6 @@ class LlamaGQA(nn.Module):
 
         self.rope = rope
 
-    # def forward(self, X, position_ids=None, mask=True):
-    #     # X: [B, N, d_model]
-    #     Q = self.q_proj(X)
-    #     K = self.k_proj(X)
-    #     V = self.v_proj(X)
-
-    #     B, N, _ = X.shape
-
-    #     q_head = Q.reshape(B, N, self.n_q_head, self.head_dim).transpose(1, 2)
-    #     k_head = K.reshape(B, N, self.n_kv_head, self.head_dim).transpose(1, 2)
-    #     v_head = V.reshape(B, N, self.n_kv_head, self.head_dim).transpose(1, 2)
-
-    #     if self.rope:
-    #         # RoPE is applied ONLY to Q and K
-    #         q_head = self.rope(q_head, position_ids)
-    #         k_head = self.rope(k_head, position_ids)
-
-
-    #     # [B, 32, N, 64]
-    #     # -> [B, 8, 4, N, 64]
-    #     q_head = q_head.reshape(B, self.n_kv_head, self.n_groups, N, self.head_dim)
-    #     scores = torch.einsum('bhgqd,bhkd->bhgqk', q_head, k_head) / (self.head_dim ** 0.5)
-
-    #     if mask:
-    #         causal_mask = torch.triu(torch.ones(N, N, device=X.device, dtype=torch.bool), diagonal=1)
-    #         scores = scores.masked_fill(causal_mask, float("-inf"))
-
-    #     attn = torch.softmax(scores, dim=-1)
-    #     output = torch.einsum('bhgqk,bhkd->bhgqd', attn, v_head)
-
-    #     output = output.reshape(B, self.n_q_head, N, self.head_dim)
-    #     output = output.permute(0, 2, 1, 3)
-    #     output = output.reshape(B, N, self.d_model)
-
-    #     return self.o_proj(output)
-
     def forward(self, X, position_ids=None, mask=True, kvcache=None):
         # X: [B, N, d_model]
         Q = self.q_proj(X)
