@@ -10,7 +10,9 @@ The implementation loads the original Llama 3.2 1B weights into the scratch arch
 
 The model follows the Llama pre-norm Transformer architecture:
 
-<img width="3441" height="4828" alt="image" src="https://github.com/user-attachments/assets/177564a8-2a4f-4fc1-829f-3908a1e5c217" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/177564a8-2a4f-4fc1-829f-3908a1e5c217" width="700" />
+</p>
 
 For GQA, the model uses **32 query heads and 8 KV heads**, with four query heads sharing each KV head.
 
