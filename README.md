@@ -422,6 +422,17 @@ uv run .\scripts\benchmark_kv.py
 uv run .\scripts\verify_hf_download.py
 ```
 
+## Future Work
+
+Planned extensions include:
+
+* **Variable-length batched generation** with per-sequence attention masks, position IDs, and KV-cache lengths.
+* **Per-sequence EOS handling** so individual sequences can finish without stopping the entire batch.
+* **More efficient batch inference** for prompts with different lengths while retaining the current batch-aware KV-cache design.
+* **Training from scratch** using the implemented architecture as a foundation for further LLM experimentation.
+* **Reasoning and post-training experiments**, including supervised fine-tuning and preference optimization.
+
+
 ## License
 
 The **source code** in this repository is licensed under the **Apache License 2.0**.
