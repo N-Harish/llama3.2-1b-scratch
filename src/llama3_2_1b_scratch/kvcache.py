@@ -1,30 +1,3 @@
-# import torch
-
-
-# class KVCache:
-#     def __init__(self):
-#         self.k = None
-#         self.v = None
-
-#     def update(self, k, v):
-#         if self.k is None:
-#             self.k = k
-#             self.v = v
-#         else:
-#             self.k = torch.cat([self.k, k], dim=2)
-#             self.v = torch.cat([self.v, v], dim=2)
-
-#         return self.k, self.v
-
-#     def clear(self):
-#         self.k = None
-#         self.v = None
-
-#     def is_empty(self):
-#         # to distinguish prefill from decode stage
-#         return self.k is None
-
-
 import torch
 
 
